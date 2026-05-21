@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Picture Steganography</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Picture Steganography</h1>
+<p class="subtitle">Hide secret messages inside images</p>
+
+<form method="POST" enctype="multipart/form-data" class="main-form">
+
+    <label for="image">Select image</label>
+    <input id="image" type="file" name="image" required>
+
+    <div class="form-group">
+        <label for="secret_type">Type</label>
+        <select id="secret_type" name="secret_type">
+            <option value="text">Text Message</option>
+            <option value="zip">ZIP File</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <textarea id="secret" name="secret" placeholder="Type your secret message here..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="secret_file">Upload ZIP File</label>
+        <input id="secret_file" type="file" name="secret_file" accept=".zip">
+    </div>
+
+    <label for="password">AES Password</label>
+    <input id="password" type="password" name="password" placeholder="Enter AES password" required>
+
+    <div class="buttons">
+        <button name="action" value="encode">Encode Message</button>
+        <button name="action" value="decode" class="outline">Decode Message</button>
+    </div>
+</form>
+
+{% if data.success %}
+<div class="success">✓ Secret data successfully encoded!</div>
+
+<div class="result-grid">
+    <div class="card">
+        <h2>ORIGINAL IMAGE</h2>
+        <img src="{{ data.original }}">
+        <hr>
+        <div class="row">
+            <span>Dimensions</span>
+            <b>{{ data.width }}×{{ data.height }}</b>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>ENCODED IMAGE</h2>
+        <img src="{{ data.encoded }}">
+        <hr>
+        <div class="row">
+            <span>Type</span>
+            <b>{{ data.secret_type }}</b>
+        </div>
+        <div class="row">
+            <span>Hidden Size</span>
+            <b>{{ data.hidden_size }} bytes</b>
+        </div>
+        <div class="row">
+            <span>Capacity Used</span>
+            <b>{{ data.capacity_used }}%</b>
+        </div>
+        <div class="row">
+            <span>Encoding</span>
+            <b>{{ data.encoding }}</b>
+        </div>
+
+        <a href="{{ data.download }}" download class="download-btn">
+            Download Encoded Image
+        </a>
+    </div>
+</div>
+{% endif %}
+
+{% if data.decoded %}
+<div class="decoded-box">
+    <h2>Decoded Message</h2>
+    <p>{{ data.decoded }}</p>
+</div>
+{% endif %}
+
+{% if data.decoded_file %}
+<div class="decoded-box">
+    <h2>Decoded ZIP File</h2>
+    <a href="{{ data.decoded_file }}" download class="download-btn">
+        Download {{ data.decoded_filename }}
+    </a>
+</div>
+{% endif %}
+
+{% if data.error %}
+<div class="error">{{ data.error }}</div>
+{% endif %}
+
+</body>
+</html>

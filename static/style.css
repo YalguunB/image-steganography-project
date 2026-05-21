@@ -1,0 +1,153 @@
+body {
+    background: #181818;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #7467ff;
+    font-size: 48px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    font-size: 20px;
+}
+
+.main-form {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #111;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #333;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 12px 0;
+    padding: 14px;
+    border-radius: 8px;
+    background: #050505;
+    color: white;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 120px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+button, .download-btn {
+    background: #6b7ff2;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.outline {
+    background: #222;
+    border: 1px solid #444;
+}
+
+.success {
+    background: #06451f;
+    color: #66ff94;
+    border: 1px solid #16883e;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 25px auto;
+    font-size: 18px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.card {
+    background: #070707;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.card h2 {
+    color: #6f8cff;
+    letter-spacing: 4px;
+    font-size: 18px;
+}
+
+.card img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    background: #111;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 20px 0;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    color: #aaa;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.row b {
+    color: white;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.decoded-box {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #061d3b;
+    border: 1px solid #1f5fbf;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.error {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #4a1010;
+    border: 1px solid #b22;
+    color: #ff9999;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+}
